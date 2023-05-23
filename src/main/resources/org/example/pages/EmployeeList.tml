@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<head>
+    <title>Employee List</title>
+</head>
+<body>
+<h2>Employee List</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Title</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <t:loop source="employees" value="employee">
+        <tr>
+            <td>${employee.meno}</td>
+            <td>${employee.priezvisko}</td>
+            <td>${employee.titul}</td>
+            <td>${employee.pohlavie}</td>
+            <td>${employee.datumNarodenia}</td>
+            <td>
+                <a href="#" t:page="employeeForm" t:context="employee">Edit</a>
+            </td>
+        </tr>
+    </t:loop>
+    </tbody>
+</table>
+
+<div>
+    <button type="button" t:id="addEmployee" t:event="click">Add Employee</button>
+</div>
+</body>
+</html>
