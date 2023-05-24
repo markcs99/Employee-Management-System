@@ -4,15 +4,15 @@ package org.example.entities;
 import java.time.LocalDate;
 
 public class Employee {
-    private String meno;
-    private String priezvisko;
+    public String meno;
+    public String priezvisko;
     private String titul;
     private String pohlavie;
-    private LocalDate datumNarodenia;
+    private long datumNarodenia;
 
     // Constructors, getters, and setters
 
-    public Employee(String meno, String priezvisko, String titul, String pohlavie, LocalDate datumNarodenia) {
+    public Employee(String meno, String priezvisko, String titul, String pohlavie, long datumNarodenia) {
         this.meno = meno;
         this.priezvisko = priezvisko;
         this.titul = titul;
@@ -25,7 +25,7 @@ public class Employee {
         this.priezvisko = "";
         this.titul = "";
         this.pohlavie = "";
-        this.datumNarodenia = null;
+        this.datumNarodenia = 0;
     }
 
     public String getMeno() {
@@ -60,11 +60,11 @@ public class Employee {
         this.pohlavie = pohlavie;
     }
 
-    public LocalDate getDatumNarodenia() {
+    public long getDatumNarodenia() {
         return datumNarodenia;
     }
 
-    public void setDatumNarodenia(LocalDate datumNarodenia) {
+    public void setDatumNarodenia(long datumNarodenia) {
         this.datumNarodenia = datumNarodenia;
     }
 }

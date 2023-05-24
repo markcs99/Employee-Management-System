@@ -1,6 +1,6 @@
-<!DOCTYPE html>
 <html t:type="layout" title="List | olderv5.6"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
 
 <h2>Employee List</h2>
 

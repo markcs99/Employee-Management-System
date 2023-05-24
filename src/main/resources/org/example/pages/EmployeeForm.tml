@@ -1,45 +1,35 @@
-<!DOCTYPE html>
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+<html t:type="layout" title="Form | olderv5.6"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-<head>
-    <title>Employee Form</title>
-</head>
-<body>
-    <h2>Employee Form</h2>
 
-    <t:form t:id="employeeForm">
-        <div>
-            <label for="meno">First Name:</label>
-            <input t:type="TextField" t:id="meno" t:value="employee.meno" />
-        </div>
-        <div>
-            <label for="priezvisko">Last Name:</label>
-            <input t:type="TextField" t:id="priezvisko" t:value="employee.priezvisko" />
-        </div>
-        <div>
-            <label for="titul">Title:</label>
-            <select t:type="Select" t:id="titul" t:value="employee.titul">
-                <option value="ing">Ing.</option>
-                <option value="mudr">MUDr.</option>
-                <option value="judr">JUDr.</option>
-                <option value="bc">Bc.</option>
-            </select>
-        </div>
-        <div>
-            <label for="pohlavie">Gender:</label>
-            <select t:type="Select" t:id="pohlavie" t:value="employee.pohlavie">
-                <option value="zena">Žena</option>
-                <option value="muz">Muž</option>
-                <option value="hybrid">Hybrid</option>
-            </select>
-        </div>
-        <div>
-            <label for="datumNarodenia">Date of Birth:</label>
-            <input t:type="DateField" t:id="datumNarodenia" t:value="employee.datumNarodenia" />
-        </div>
-        <div>
-            <input type="submit" value="Save" />
-        </div>
-    </t:form>
-</body>
+<h2>Employee Form</h2>
+
+<!--<t:beaneditform object="employee"></t:beaneditform>-->
+
+<t:form t:id="employeeForm" t:type="form" >
+    <div>
+        <label for="meno">First Name:</label>
+        <input id="meno" t:type="TextField" t:id="meno" t:value = "meno"/>
+    </div>
+    <div>
+        <label for="priezvisko">Last Name:</label>
+        <input id="priezvisko" t:type="TextField" t:id="priezvisko" t:value = "priezvisko" />
+    </div>
+    <div>
+        <label for="titul">Title:</label>
+        <t:select id="titul" t:id="titul" t:value="selectedTitle" t:model="titleOptions" />
+    </div>
+    <div>
+        <label for="pohlavie">Gender:</label>
+        <t:select id="pohlavie" t:id="pohlavie" t:value="selectedPohlavie" t:model="pohlavieOptions" />
+    </div>
+    <div>
+        <label for="datumNarodenia">Birth Date:</label>
+        <input id="datumNarodenia" t:type="DateField" t:id="datumNarodenia" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</t:form>
+
 </html>

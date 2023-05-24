@@ -23,13 +23,7 @@ public class CsvEmployeeServiceImpl implements CsvEmployeeService {
                 String priezvisko = data[1];
                 String titul = data[2];
                 String pohlavie = data[3];
-                long timestamp = Long.parseLong(data[4]);
-
-
-
-                LocalDate datumNarodenia = Instant.ofEpochSecond(timestamp)
-                        .atZone(ZoneOffset.UTC)
-                        .toLocalDate();
+                long datumNarodenia = Long.parseLong(data[4]);
 
                 Employee employee = new Employee(meno, priezvisko, titul, pohlavie, datumNarodenia);
                 employees.add(employee);
@@ -47,9 +41,9 @@ public class CsvEmployeeServiceImpl implements CsvEmployeeService {
                     employee.getPriezvisko() + "," +
                     employee.getTitul() + "," +
                     employee.getPohlavie() + "," +
-                    employee.getDatumNarodenia().toString();
-            writer.write(line);
+                    employee.getDatumNarodenia();
             writer.newLine();
+            writer.write(line);
         } catch (IOException e) {
             e.printStackTrace();
         }
