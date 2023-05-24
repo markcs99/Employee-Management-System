@@ -5,6 +5,7 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.example.entities.Employee;
 import org.example.services.CsvEmployeeService;
+import org.example.services.CsvEmployeeServiceImpl;
 
 public class EmployeeForm {
 
@@ -31,12 +32,12 @@ public class EmployeeForm {
         csvEmployeeService.addEmployee(employee);
         employeeList.setup();
     }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
+//
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
+//    }
+//
+//    public Employee getEmployee() {
+//        return employee;
+//    }
 }

@@ -34,7 +34,7 @@
 </table>
 
 <div>
-    <button type="button" t:id="addEmployee" t:event="click">Add Employee</button>
+<!--    <button type="button" t:id="addEmployee" t:event="click">Add Employee</button>-->
 </div>
 </body>
 </html>

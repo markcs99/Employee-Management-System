@@ -6,6 +6,7 @@ import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.example.entities.Employee;
 import org.example.services.CsvEmployeeService;
+import org.example.services.CsvEmployeeServiceImpl;
 
 import java.util.List;
 
@@ -17,6 +18,9 @@ public class EmployeeList {
     @Property
     private List<Employee> employees;
 
+    @Property
+    private Employee employee;
+
     @InjectPage
     private EmployeeForm employeeForm;
 
@@ -26,11 +30,11 @@ public class EmployeeList {
     }
 
     public void onAddEmployee() {
-        employeeForm.setEmployee(new Employee());
+//        employeeForm.setEmployee(new Employee());
     }
 
     public EmployeeForm onEditEmployee(Employee employee) {
-        employeeForm.setEmployee(employee);
+//        employeeForm.setEmployee(employee);
         return employeeForm;
     }
 
