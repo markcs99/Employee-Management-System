@@ -23,7 +23,7 @@ public class CsvEmployeeServiceImpl implements CsvEmployeeService {
                 String priezvisko = data[1];
                 String titul = data[2];
                 String pohlavie = data[3];
-                long datumNarodenia = Long.parseLong(data[4]);
+                LocalDate datumNarodenia = LocalDate.parse(data[4]);
 
                 Employee employee = new Employee(meno, priezvisko, titul, pohlavie, datumNarodenia);
                 employees.add(employee);

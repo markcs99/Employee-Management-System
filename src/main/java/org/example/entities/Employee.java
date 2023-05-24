@@ -8,11 +8,11 @@ public class Employee {
     public String priezvisko;
     private String titul;
     private String pohlavie;
-    private long datumNarodenia;
+    private LocalDate datumNarodenia;
 
     // Constructors, getters, and setters
 
-    public Employee(String meno, String priezvisko, String titul, String pohlavie, long datumNarodenia) {
+    public Employee(String meno, String priezvisko, String titul, String pohlavie, LocalDate datumNarodenia) {
         this.meno = meno;
         this.priezvisko = priezvisko;
         this.titul = titul;
@@ -25,7 +25,7 @@ public class Employee {
         this.priezvisko = "";
         this.titul = "";
         this.pohlavie = "";
-        this.datumNarodenia = 0;
+        this.datumNarodenia = null;
     }
 
     public String getMeno() {
@@ -60,11 +60,11 @@ public class Employee {
         this.pohlavie = pohlavie;
     }
 
-    public long getDatumNarodenia() {
+    public LocalDate getDatumNarodenia() {
         return datumNarodenia;
     }
 
-    public void setDatumNarodenia(long datumNarodenia) {
+    public void setDatumNarodenia(LocalDate datumNarodenia) {
         this.datumNarodenia = datumNarodenia;
     }
 }

@@ -66,7 +66,7 @@ public class EmployeeForm {
                 priezvisko,
                 selectedTitle,
                 selectedPohlavie,
-                datumNarodenia.atStartOfDay(ZoneOffset.UTC).toEpochSecond());
+                datumNarodenia);
         csvEmployeeService.addEmployee(employee);
         return EmployeeList.class;
     }
