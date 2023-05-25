@@ -24,7 +24,7 @@
             <td>${employee.pohlavie}</td>
             <td>${employee.datumNarodenia}</td>
             <td>
-                <a href="#" t:page="employeeForm" t:context="employee">Edit</a>
+                <t:pagelink page="employeeForm" t:context="employee">Edit</t:pagelink>
             </td>
         </tr>
     </t:loop>
