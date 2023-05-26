@@ -1,6 +1,7 @@
 package org.example.pages;
 
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Form;
@@ -10,20 +11,21 @@ import org.example.entities.Employee;
 import org.example.services.CsvEmployeeService;
 
 import java.time.LocalDate;
-import java.time.ZoneOffset;
 import java.util.Arrays;
 import java.util.List;
 
 public class EmployeeForm {
 
-    @Property
+    @PageActivationContext
+    private String id;
+
     private Employee employee;
 
     @Property
     private String meno;
+
     @Property
     private String priezvisko;
-
 
     @Property
     private String selectedTitle;
@@ -46,12 +48,20 @@ public class EmployeeForm {
     @Component(id = "pohlavie")
     private Select pohlavieSelect;
 
-//    @SetupRender
-//    public void setup() {
-//        if (employee == null) {
-//            employee = new Employee();
-//        }
-//    }
+    @SetupRender
+    public void setup() {
+        if (id != null) {
+            employee = csvEmployeeService.getEmployeeById(id);
+
+            if (employee != null) {
+                meno = employee.getMeno();
+                priezvisko = employee.getPriezvisko();
+                selectedTitle = employee.getTitul();
+                selectedPohlavie = employee.getPohlavie();
+                datumNarodenia = employee.getDatumNarodenia();
+            }
+        }
+    }
 
     public List<String> getTitleOptions() {
         return Arrays.asList("Ing.", "MUDr.", "JUDr.", "Bc.");
@@ -62,12 +72,27 @@ public class EmployeeForm {
     }
 
     public Object onSuccess() {
-        employee = new Employee(meno,
+        if (id != null) {
+            employee = csvEmployeeService.getEmployeeById(id);
+
+            if (employee != null) {
+                employee.setMeno(meno);
+                employee.setPriezvisko(priezvisko);
+                employee.setTitul(selectedTitle);
+                employee.setPohlavie(selectedPohlavie);
+                employee.setDatumNarodenia(datumNarodenia);
+                csvEmployeeService.updateEmployee(employee);
+                return EmployeeList.class;
+            }
+        }
+        employee = new Employee(
+                meno,
                 priezvisko,
                 selectedTitle,
                 selectedPohlavie,
                 datumNarodenia);
         csvEmployeeService.addEmployee(employee);
+
         return EmployeeList.class;
     }
 }

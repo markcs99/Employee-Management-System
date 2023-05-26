@@ -7,6 +7,8 @@ import java.util.List;
 public interface CsvEmployeeService {
     List<Employee> getAllEmployees();
     void addEmployee(Employee employee);
-//    void updateEmployee(Employee employee);
+
+    Employee getEmployeeById(String id);
+    void updateEmployee(Employee employee);
 //    void deleteEmployee(Employee employee);
 }

@@ -1,6 +1,7 @@
 package org.example.pages;
 
 import org.apache.tapestry5.annotations.InjectPage;
+import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -17,7 +18,7 @@ public class EmployeeList {
 
     @Property
     private List<Employee> employees;
-
+    @PageActivationContext
     @Property
     private Employee employee;
 

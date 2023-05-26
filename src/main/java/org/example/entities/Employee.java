@@ -13,8 +13,8 @@ public class Employee {
 
     // Constructors, getters, and setters
 
-    public Employee(int id,String meno, String priezvisko, String titul, String pohlavie, LocalDate datumNarodenia) {
-        this.id = String.valueOf(id);
+    public Employee(String id,String meno, String priezvisko, String titul, String pohlavie, LocalDate datumNarodenia) {
+        this.id = id;
         this.meno = meno;
         this.priezvisko = priezvisko;
         this.titul = titul;
