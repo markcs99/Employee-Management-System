@@ -1,11 +1,12 @@
 package org.example.pages;
 
-import org.apache.tapestry5.annotations.Component;
-import org.apache.tapestry5.annotations.PageActivationContext;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SetupRender;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.Select;
+import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.example.entities.Employee;
 import org.example.services.CsvEmployeeService;
@@ -15,6 +16,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EmployeeForm {
+
+    private static final Logger logger = LogManager.getLogger(EmployeeForm.class);
+    @Inject
+    private AlertManager alertManager;
 
     @PageActivationContext
     private String id;
@@ -39,14 +44,19 @@ public class EmployeeForm {
     @Inject
     private CsvEmployeeService csvEmployeeService;
 
-    @Component
-    private Form employeeForm;
-
     @Component(id = "titul")
     private Select titleSelect;
 
     @Component(id = "pohlavie")
     private Select pohlavieSelect;
+
+    @InjectComponent
+    private Form employeeForm;
+
+    @InjectComponent("meno")
+    private TextField menoField;
+    @InjectComponent("priezvisko")
+    private TextField priezviskoField;
 
     @SetupRender
     public void setup() {
@@ -105,5 +115,19 @@ public class EmployeeForm {
         csvEmployeeService.addEmployee(employee);
 
         return EmployeeList.class;
+    }
+    void onValidateFromEmployeeForm()
+    {
+        if (meno.length()< 3)
+            employeeForm.recordError(menoField, "Enter valid First Name");
+
+        if (priezvisko.length()< 3)
+            employeeForm.recordError(priezviskoField, "Enter valid Last Name");
+
+    }
+    void onFailure()
+    {
+        logger.warn("Form error!");
+        alertManager.error("Employee Form error, check for details!");
     }
 }

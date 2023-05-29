@@ -9,26 +9,26 @@
 <t:form t:id="employeeForm" t:type="form" >
     <div>
         <label for="meno">First Name:</label>
-        <input id="meno" t:type="TextField" t:id="meno" t:value = "meno"/>
+        <t:textfield id="meno" validate="required" t:type="TextField" t:id="meno" t:value = "meno"/>
     </div>
     <div>
         <label for="priezvisko">Last Name:</label>
-        <input id="priezvisko" t:type="TextField" t:id="priezvisko" t:value = "priezvisko" />
+        <t:textfield id="priezvisko" validate="required" t:type="TextField" t:id="priezvisko" t:value = "priezvisko" />
     </div>
     <div>
         <label for="titul">Title:</label>
-        <t:select id="titul" t:id="titul" t:value="selectedTitle" t:model="titleOptions" />
+        <t:select id="titul" validate="required" t:id="titul" t:value="selectedTitle" t:model="titleOptions" />
     </div>
     <div>
         <label for="pohlavie">Gender:</label>
-        <t:select id="pohlavie" t:id="pohlavie" t:value="selectedPohlavie" t:model="pohlavieOptions" />
+        <t:select id="pohlavie" validate="required" t:id="pohlavie" t:value="selectedPohlavie" t:model="pohlavieOptions" />
     </div>
     <div>
         <label for="datumNarodenia">Birth Date:</label>
-        <input id="datumNarodenia" t:type="DateField" t:id="datumNarodenia" />
+        <input id="datumNarodenia" validate="required" t:type="DateField" t:id="datumNarodenia" />
     </div>
     <div>
-        <input type="submit" value="Submit" />
+        <t:submit class="btn btn-large btn-primary" value="Submit"/>
         <t:if test="employee">
             <t:eventlink t:event="deleteEmployee" t:context="employee">Delete</t:eventlink>
         </t:if>
