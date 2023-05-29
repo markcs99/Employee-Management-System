@@ -46,7 +46,9 @@ public class Layout {
     }
 
     public String[] getPageNames() {
-        return new String[]{"Index", "About", "EmployeeList", "EmployeeForm"};
+      //  return new String[]{"Index", "About", "EmployeeList", "EmployeeForm"};
+
+        return new String[]{"Index", "EmployeeList", "EmployeeForm"};
     }
 
     public int getYear() {

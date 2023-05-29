@@ -44,12 +44,12 @@ public class Index
             null;
     }
 
-    Object onActionFromLearnMore()
-    {
-        about.setLearn("LearnMore");
-
-        return about;
-    }
+//    Object onActionFromLearnMore()
+//    {
+//        about.setLearn("LearnMore");
+//
+//        return about;
+//    }
 
     @Log
     void onComplete()

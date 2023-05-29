@@ -13,7 +13,6 @@ import java.util.List;
 
 public class CsvEmployeeServiceImpl implements CsvEmployeeService {
     private static final String CSV_FILE_PATH = "src/main/resources/employees.csv";
-    private static final String CSV_TEMP_FILE_PATH = "src/main/resources/employees_temp.csv";
 
 
     public List<Employee> getAllEmployees() {
@@ -100,8 +99,11 @@ public class CsvEmployeeServiceImpl implements CsvEmployeeService {
         }
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE_PATH))) {
-            for (String line : lines) {
-                writer.write(line);
+            for (int i = 0; i < lines.size(); i++) {
+                writer.write(lines.get(i));
+                if (i < lines.size() - 1) {
+                    writer.newLine();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
