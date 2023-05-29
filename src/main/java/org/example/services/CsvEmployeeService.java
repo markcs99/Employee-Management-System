@@ -10,5 +10,5 @@ public interface CsvEmployeeService {
 
     Employee getEmployeeById(String id);
     void updateEmployee(Employee employee);
-//    void deleteEmployee(Employee employee);
+    void deleteEmployee(Employee employee);
 }

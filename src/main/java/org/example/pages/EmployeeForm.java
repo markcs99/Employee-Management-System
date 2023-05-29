@@ -18,7 +18,7 @@ public class EmployeeForm {
 
     @PageActivationContext
     private String id;
-
+    @Property
     private Employee employee;
 
     @Property
@@ -69,6 +69,17 @@ public class EmployeeForm {
 
     public List<String> getPohlavieOptions() {
         return Arrays.asList("Muž", "Źena", "Hybrid");
+    }
+
+    public Object onDeleteEmployee() {
+        if (id != null) {
+            employee = csvEmployeeService.getEmployeeById(id);
+            if (employee != null) {
+                csvEmployeeService.deleteEmployee(employee);
+                employee = null; // Clear the employee object after deletion
+            }
+        }
+        return EmployeeList.class;
     }
 
     public Object onSuccess() {

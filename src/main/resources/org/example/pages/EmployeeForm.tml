@@ -29,6 +29,9 @@
     </div>
     <div>
         <input type="submit" value="Submit" />
+        <t:if test="employee">
+            <t:eventlink t:event="deleteEmployee" t:context="employee">Delete</t:eventlink>
+        </t:if>
     </div>
 </t:form>
 
